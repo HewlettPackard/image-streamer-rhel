@@ -1,4 +1,4 @@
-#RHEL 7.2 Artifact Bundle Contents
+# RHEL 7.2 Artifact Bundle Contents
 
 --------------------------------------------------------------------------------
          File name: HPE-RHEL-7.2-2017-03-15.zip
