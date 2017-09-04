@@ -89,7 +89,7 @@ Plan Scripts:
 	Description: Configures NICs.
 
 
-#RHEL 7.3 Artifact Bundle Contents
+# RHEL 7.3 Artifact Bundle Contents
 
 --------------------------------------------------------------------------------
          File name: HPE-RHEL-7.3-2017-03-24.zip
