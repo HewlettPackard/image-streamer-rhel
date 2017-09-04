@@ -26,7 +26,7 @@ Plan Scripts:
 
 	       Name: RHEL-7.2-generalize-users-2017-03-15 (capture)
 	   FullName: 3bd9509b-c572-4efd-8371-bb3acb42e287_planscript.json
-	Description: 
+	Description: remove user settings
 
 
 	       Name: RHEL-7.2-configure-partition-using-LVM-2017-03-15 (deploy)
@@ -36,12 +36,12 @@ Plan Scripts:
 
 	       Name: RHEL-7.2-configure-users-2017-03-15 (deploy)
 	   FullName: 420509d5-b38a-4d40-9ef5-6f6c686e4e66_planscript.json
-	Description: 
+	Description: Helps to change the root password and to add a new user to the server based on user input.
 
 
 	       Name: RHEL-7.2-generalize-host-2017-03-15 (capture)
 	   FullName: 436d753d-97b7-4ca8-b8a2-77ee2a415109_planscript.json
-	Description: 
+	Description: remove host configuration
 
 
 	       Name: RHEL-7.2-mount-and-validate-2017-03-15 (general)
@@ -51,12 +51,12 @@ Plan Scripts:
 
 	       Name: RHEL-7.2-mount-generalize-2017-03-15 (capture)
 	   FullName: 51e4b702-2e68-47a7-a362-e872b6f54db3_planscript.json
-	Description: 
+	Description: mount RHEL partition for generalization
 
 
 	       Name: RHEL-7.2-unmount-generalize-2017-03-15 (capture)
 	   FullName: 530b05d4-b21c-4124-91f5-3de9a44e2b33_planscript.json
-	Description: 
+	Description: unmount RHEL partition after generalization
 
 
 	       Name: RHEL-7.2-manage-security-services-2017-04-20 (deploy)
@@ -66,7 +66,7 @@ Plan Scripts:
 
 	       Name: RHEL-7.2-generalize-network-2017-03-15 (capture)
 	   FullName: 7027269f-6e0f-4c08-bdd5-ab90fff94ea5_planscript.json
-	Description: 
+	Description: remove network configuration
 
 
 	       Name: RHEL-7.2-unmount-2017-03-15 (general)
@@ -76,12 +76,12 @@ Plan Scripts:
 
 	       Name: RHEL-7.2-configure-hostname-2017-03-15 (deploy)
 	   FullName: cfe4089c-7f58-4917-b651-31ef4749b111_planscript.json
-	Description: 
+	Description: configure hostname
 
 
 	       Name: RHEL-7.2-configure-multiple-NIC-teaming-2017-03-15 (deploy)
 	   FullName: d0be60dd-523d-4d49-887e-36f7f4ab8957_planscript.json
-	Description: 
+	Description: Configures NIC teaming
 
 
 	       Name: RHEL-7.2-configure-multiple-NICs-2017-03-15 (deploy)
@@ -117,12 +117,12 @@ Plan Scripts:
 
 	       Name: RHEL-7.3-generalize-users-2017-03-15 (capture)
 	   FullName: 12078408-ecb4-4e53-9f05-b3e81905ccca_planscript.json
-	Description: 
+	Description: remove user settings
 
 
 	       Name: RHEL-7.3-mount-generalize-2017-03-15 (capture)
 	   FullName: 283abecb-c01c-4430-933f-bbbec5dd3a6e_planscript.json
-	Description: 
+	Description: mount RHEL partition for generalization
 
 
 	       Name: RHEL-7.3-configure-users-2017-03-15 (deploy)
@@ -137,17 +137,17 @@ Plan Scripts:
 
 	       Name: RHEL-7.3-configure-hostname-2017-03-15 (deploy)
 	   FullName: 3d3f84a5-9482-4731-aff4-b05af5720105_planscript.json
-	Description: 
+	Description: configure hostname
 
 
 	       Name: RHEL-7.3-configure-multiple-NIC-teaming-2017-03-15 (deploy)
 	   FullName: 683851bc-152e-4f9f-bdc6-4b48bc699807_planscript.json
-	Description: 
+	Description: Configures NIC teaming
 
 
 	       Name: RHEL-7.3-generalize-network-2017-03-15 (capture)
 	   FullName: 6b17299b-3993-48a8-92b4-cb011b2f6b21_planscript.json
-	Description: 
+	Description: remove network configuration
 
 
 	       Name: RHEL-7.3-configure-partition-using-LVM-2017-03-15 (deploy)
@@ -157,17 +157,17 @@ Plan Scripts:
 
 	       Name: RHEL-7.3-unmount-generalize-2017-03-15 (capture)
 	   FullName: 9090e936-0b25-46dc-ae9c-6927ef933028_planscript.json
-	Description: 
+	Description: unmount RHEL partition after generalization
 
 
 	       Name: RHEL-7.3-mount-and-validate-2017-03-15 (general)
 	   FullName: 960e3538-ddf4-47ba-b204-0d39c24a6bdd_planscript.json
-	Description: 
+	Description: Plan Script mount to the root partition of the server along with that it will validate image to check whether it is appropriate image to use.
 
 
 	       Name: RHEL-7.3-generalize-host-2017-03-15 (capture)
 	   FullName: bd94845c-d675-4656-9c24-53b29686f6a5_planscript.json
-	Description: 
+	Description: remove host configuration
 
 
 	       Name: RHEL-7.3-unmount-2017-03-15 (general)
