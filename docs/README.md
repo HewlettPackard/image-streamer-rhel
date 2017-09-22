@@ -1,1 +1,1 @@
-Documentation for RHEL artifact bundle
+Documentation for RHEL artifact bundles
