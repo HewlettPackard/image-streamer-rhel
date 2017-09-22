@@ -1,10 +1,20 @@
 # RHEL 7.2 artifacts for ImageStreamer v3.1 release
-Note: 
+## Note: 
 - All artifact bundles in this repo are compatible with ImageStreamer v3.1 release
 - Click on 'Branch:' drop down menu on this page to get artifact bundles for other ImageStreamer releases
       
+## Version History:
 
-# Artifact Bundle Contents
+HPE-RHEL-7.2-2017-08-21-v3.1 
+- Fixes for issues related to NIC teaming, default gateway, default route
+
+HPE-RHEL-7.2-2017-04-20 
+- Fixed issues with character encoding
+
+HPE-RHEL-7.2-2017-03-24 
+- Initial version
+
+## Artifact Bundle Contents
 
 --------------------------------------------------------------------------------
 
