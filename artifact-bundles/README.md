@@ -27,7 +27,7 @@ HPE-RHEL-2018-09-11-v4.1.zip
          File name: HPE-RHEL-2018-09-11-v4.1.zip
          Name (in manifest): HPE-RHEL-2018-09-11-v4.1
          Description: ImageStreamer artifacts for RHEL 7.X personalization and generalization.
-         Dated: 2018-09-11 (13:36.03)
+         Dated: 2018-09-11 (06:13:36)
 --------------------------------------------------------------------------------
 
 Build Plans:
