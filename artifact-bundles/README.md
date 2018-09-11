@@ -10,12 +10,15 @@
 
 ## Version History:
 HPE-RHEL-2018-09-11-v4.1.zip
-   - Type has been updated for CAs on buildplan RHEL-personalize-and-NIC-teamings-LVM-BP-2018-09-11 and RHEL-personalize-and-configure-NICs-LVM-BP-2018-09-11
+   - Type has been updated for CAs on buildplan 
    
    	"DomainName" as FQDN,  "TotalNICTeamings" as Number
-   - One line description has been updated for CAs on buildplan RHEL-personalize-and-NIC-teamings-LVM-BP-2018-09-11 and RHEL-personalize-and-configure-NICs-LVM-BP-2018-09-11
+   - One line description has been updated for CAs on buildplan
    
    	"DomainName","TotalNICTeamings","New User","NewRootPassword","NewUserPassword","NICTeam0Name","NICTeam1Name"
+   - Files chnaged in this version :
+		- RHEL-personalize-and-NIC-teamings-LVM-BP-2018-09-11
+		- RHEL-personalize-and-configure-NICs-LVM-BP-2018-09-11
    
 
 ## Artifact Bundle Contents:
