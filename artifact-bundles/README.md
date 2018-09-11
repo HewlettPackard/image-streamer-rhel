@@ -3,19 +3,33 @@
 ## Note:
 - All artifact bundles in this repo are compatible with ImageStreamer v4.1 release
 - Click on 'Branch:' drop down menu on this page to get artifact bundles for other ImageStreamer releases
+- The following RHEL versions are supported
+	- RHEL 7.2
+	- RHEL 7.3
+	- RHEL 7.4
+
+## Version History:
+HPE-RHEL-2018-09-11-v4.1.zip
+   - Type has been updated for CAs on buildplan RHEL-personalize-and-NIC-teamings-LVM-BP-2018-09-11 and RHEL-personalize-and-configure-NICs-LVM-BP-2018-09-11
+   
+   	"DomainName" as FQDN,  "TotalNICTeamings" as Number
+   - One line description has been updated for CAs on buildplan RHEL-personalize-and-NIC-teamings-LVM-BP-2018-09-11 and RHEL-personalize-and-configure-NICs-LVM-BP-2018-09-11
+   
+   	"DomainName","TotalNICTeamings","New User","NewRootPassword","NewUserPassword","NICTeam0Name","NICTeam1Name"
+   
 
 ## Artifact Bundle Contents:
 
 --------------------------------------------------------------------------------
-         File name: HPE-RHEL-2018-05-10-v4.1.zip
-         Name (in manifest): HPE-RHEL-2018-05-10-v4.1
+         File name: HPE-RHEL-2018-09-11-v4.1.zip
+         Name (in manifest): HPE-RHEL-2018-09-11-v4.1
          Description: ImageStreamer artifacts for RHEL 7.X personalization and generalization.
-         Dated: 2018-06-27 (16:32:29)
+         Dated: 2018-09-11 (13:36.03)
 --------------------------------------------------------------------------------
 
 Build Plans:
 
-	       Name: RHEL-personalize-and-NIC-teamings-LVM-BP-2018-06-27 (Type:deploy)
+	       Name: RHEL-personalize-and-NIC-teamings-LVM-BP-2018-09-11 (Type:deploy)
 	Description: Personalizes RHEL 7.X and configures NIC teaming 
 
 
@@ -23,7 +37,7 @@ Build Plans:
 	Description: Remove personalization settings from RHEL 7.X 
 
 
-	       Name: RHEL-personalize-and-configure-NICs-LVM-BP-2018-06-27 (Type:deploy)
+	       Name: RHEL-personalize-and-configure-NICs-LVM-BP-2018-09-11 (Type:deploy)
 	Description: Personalizes RHEL 7.X and configures NIC teaming  
 
 
