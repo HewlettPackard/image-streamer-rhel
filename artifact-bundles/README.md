@@ -27,7 +27,7 @@ Until now the root partition was mounted, but now, to enable UEFI based deployme
 - ***A new Golden Image needs to be created for using EFI based artifact bundle. Any existing Golden Images created using earlier releases of artifact bundle will not work with EFI artifact bundle. Follow the below steps to capture the Golden Image for RHEL7.***
 
 ( In case of HPE Vitual Connect SE 100Gb F32 Module or HPE Synergy 50Gb Interconnect Link Module hardware, follow the steps given in the linked document to load the driver and capture the golden image.
-https://github.hpe.com/ImageStreamerStaged/image-streamer-rhel/blob/v5.0/docs/HPE%20Synergy%20ImageStreamer%20Documentation%20for%20RHEL%207.6%20for%20loading%20drivers%20during%20installation%20and%20Golden%20Image%20capture.pdf )
+https://github.com/HewlettPackard/image-streamer-rhel/blob/v5.0/docs/HPE%20Synergy%20ImageStreamer%20Documentation%20for%20RHEL%207.6%20for%20loading%20drivers%20during%20installation%20and%20Golden%20Image%20capture.pdf )
 
 - If you do not have a external hard drive attached to the blade please leave the default "disabled" option of filesystem attribute as is. Please make sure you change Filesystem Attribute in the Server Profile creation page to desired filesystem type "only when you have a external drive attached to the blade".
 
