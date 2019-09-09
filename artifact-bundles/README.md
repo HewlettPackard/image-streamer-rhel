@@ -56,7 +56,7 @@ https://github.com/HewlettPackard/image-streamer-rhel/blob/v5.0/docs/HPE%20Syner
 
 7.	Modify /etc/rc.d/rc.local. Add below line
 
-      -	sh /boot/efi/EFI/HPE/isdeploy/HPE-ImageStreamer.bash
+      -	sh /boot/efi/EFI/HPE/isdeploy/HPEImageStreamer.bash
       - service ibftT start ( ## Note: Add this line only if using either of the following setups - HPE Vitual Connect SE 100Gb F32 Module or HPE Synergy 50Gb Interconnect Link Module )
 
 8.	Change permission of the rc.local file. (chmod 755 /etc/rc.d/rc.local)
