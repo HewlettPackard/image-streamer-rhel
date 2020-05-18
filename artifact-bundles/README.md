@@ -3,6 +3,13 @@
 ## Note:
 - All artifact bundles in this repo are compatible with ImageStreamer v5.2 release
 - Click on 'Branch:' drop down menu on this page to get artifact bundles for other ImageStreamer releases
+- The following RHEL versions are supported
+  - RHEL 7.2
+  - RHEL 7.3
+  - RHEL 7.4
+  - RHEL 7.6
+  - RHEL 7.7
+  - RHEL 8.0
 
 ## EFI based artifacts
 
@@ -12,12 +19,11 @@ This was not possible earlier because, Guestfish, used to customize the boot vol
 Until now the root partition was mounted in the plan scripts, but now, to enable deployment using FAT32,  mount the partition (/boot/efi) and run the plan scripts through it for personalization, which provides support for all the filesystems.
 
 ## Version history
+- HPE-RHEL7-EFI-2020-04-08-v5.2.zip 
+	- supports both init and systemd boot process
+- HPE-RHEL8-EFI-2020-04-08-v5.2.zip 
+	- supports only systemd boot process
 
-HPE-RHEL7-EFI-2020-04-08-v5.2.zip
-   - RHEL7 Artifact bundle for EFI based deployments.
-   
-HPE-RHEL8-EFI-2020-04-08-v5.2.zip
-   - RHEL8 Artifact bundle for EFI based deployments.
 
 # Prerequisite for using EFI Based Artifact bundle
 
@@ -117,79 +123,160 @@ HPE-RHEL8-EFI-2020-04-08-v5.2.zip
 
 - https://github.com/HewlettPackard/image-streamer-rhel/blob/v5.2/docs/HPE%20Synergy%20ImageStreamer%20Documentation%20for%20RHEL%207.6%20for%20loading%20drivers%20during%20installation%20and%20Golden%20Image%20capture.pdf
 
-
 ## Artifact Bundle Contents:
-
 --------------------------------------------------------------------------------
 
-	            File name: HPE-RHEL7-EFI-2019-06-11-v5.0.zip
-		Name (in manifest): HPE-RHEL7-EFI-2019-06-11-v5.0
-		       Description: ImageStreamer artifacts for RHEL 7.X personalization and generalization.
-		             Dated: 2019-06-11 (11:22:36)
+	            File name: HPE-RHEL7-EFI-2020-04-08-v5.2.zip
+		Name (in manifest): HPE-RHEL7-EFI-2020-04-08-v5.2
+		       Description: ImageStreamer artifacts for RHEL7 personalization and generalization.(c) Copyright 2019-2020 Hewlett Packard Enterprise Development LP. Licensed under the Apache License, Version 2.0 (the \"License\")...
+		             Dated: 2020-04-08 (18:50:36)
 
 --------------------------------------------------------------------------------
 
 Build Plans:
 
 	       Name: HPE-RHEL7-EFI-personalize-and-configure-NICs-LVM-2019-06-11 (Type:deploy)
-	Description: Personalizes RHEL 7.X for XFS Partition using EFI and configures Multi NIC's  
+	Description: Personalizes RHEL7 for XFS Partition using EFI and configures Multi NIC's  Copyright 2018 -2019 Hewlett Packard Enterprise Development LP Licensed under the Apache License, Version 2.0 (the "License");...
 
 
-	       Name: HPE-RHEL7-EFI-personalize-and-configure-NIC-teamings-LVM-2019-06-07 (Type:deploy)
-	Description: Personalizes RHEL 7.X for XFS Partition using EFI and configures NIC teaming 
+	       Name: HPE-RHEL7-EFI-personalize-and-configure-NIC-teamings-LVM-2020-04-08 (Type:deploy)
+	Description: Personalizes RHEL7 for XFS Partition using EFI and configures NIC teaming (c) Copyright 2018-2020 Hewlett Packard Enterprise Development LP Licensed under the Apache License, Version 2.0 (the "License");...
 
 
 
 Plan Scripts:
 
+	       Name: HPE-RHEL7-EFI-configure-deployment-NIC-teaming-2020-04-06 (deploy)
+	   FullName: 24e3db30-983e-49c7-bdb1-3f33932c4808_planscript.json
+	Description: Script to configure deployment interface teaming (ibftNIC teaming)
+
+
 	       Name: HPE-RHEL7-EFI-unmount-2019-03-21 (general)
-	   FullName: 29842898-0f3e-4a95-9d64-9c100b06a968_planscript.json
+	   FullName: 46795bfa-5021-43fa-ad4a-f798d1054b0c_planscript.json
 	Description: Unmounts the EFI partition
 
 
-	       Name: HPE-RHEL7-EFI-configure-management-NIC-teaming-2019-03-25 (deploy)
-	   FullName: 4545a4ba-490f-487f-b8f9-263b3bf426a9_planscript.json
+	       Name: HPE-RHEL7-EFI-configure-management-NIC-teaming-2020-04-08 (deploy)
+	   FullName: 5118a8a3-e6f5-4525-abf5-14a43a630b0a_planscript.json
 	Description: Configures management NIC teaming.
 
 
 	       Name: HPE-RHEL7-EFI-configure-hostname-2019-03-21 (deploy)
-	   FullName: 4d4778e2-ced4-4864-872d-04f4b6fcb9e5_planscript.json
+	   FullName: 5f4548d6-627b-49fc-8140-0b8e4f23b91e_planscript.json
 	Description: Configure hostname
 
 
 	       Name: HPE-RHEL7-EFI-configure-partition-using-LVM-2019-05-01 (deploy)
-	   FullName: 5844db39-92fe-4707-b614-b56afda6cd9b_planscript.json
+	   FullName: 72d49037-64d9-4078-9720-7cfc944b256a_planscript.json
 	Description: LVM configuration using /boot/efi
 
 
-	       Name: HPE-RHEL7-EFI-wrapper-2019-03-21 (deploy)
-	   FullName: 77d9557c-18f0-4f7d-a1e3-b2b4a8b91f9d_planscript.json
-	Description: This is a wrapper script where all other scripts are evoked.
-
-
 	       Name: HPE-RHEL7-EFI-configure-multiple-NICs-2019-03-21 (deploy)
-	   FullName: 7f436449-921d-46d6-adaf-e638174b165b_planscript.json
+	   FullName: 799368cb-b4ea-4dfb-a3ca-2b7b0199aec9_planscript.json
 	Description: Configures NICs
 
 
-	       Name: HPE-RHEL7-EFI-configure-users-2019-03-21 (deploy)
-	   FullName: 8677fc04-6061-401e-9e5a-87f8756d7714_planscript.json
-	Description: Sets root password and create user accounts
-
-
-	       Name: HPE-RHEL7-EFI-configure-deployment-NIC-teaming-2019-03-25 (deploy)
-	   FullName: b6f243bd-a9ab-443e-905b-b9a4638a8591_planscript.json
-	Description: Script to configure deployment interface teaming (ibftNIC teaming)
-
-
 	       Name: HPE-RHEL7-EFI-mount-2019-03-21 (general)
-	   FullName: c3de07cc-8138-48d9-be76-c80a4875fc35_planscript.json
+	   FullName: a9cfe338-d8b6-48ef-8d98-b3cd28fb9abb_planscript.json
 	Description: Mounts EFI partition (/dev/sda1) as root(/)
 
 
+	       Name: HPE-RHEL7-EFI-configure-users-2019-03-21 (deploy)
+	   FullName: c1a51f22-df0e-46f6-bd8e-d7443d2b9ad4_planscript.json
+	Description: Sets root password and create user accounts
+
+
 	       Name: HPE-RHEL7-EFI-manage-security-services-2019-03-21 (deploy)
-	   FullName: eccaa17b-b9ca-45a6-a317-181965494101_planscript.json
+	   FullName: c413c855-4e18-447e-9510-1e5f16978cc9_planscript.json
 	Description: Enables/Disables SSH and Enables Selinux Security
+
+
+	       Name: HPE-RHEL7-EFI-wrapper-2019-03-21 (deploy)
+	   FullName: f31bc2ce-8c13-45cc-a281-41a8d9c39dac_planscript.json
+	Description: This is a wrapper script where all other scripts are evoked.
+
+
+
+
+
+
+
+
+
+
+
+
+--------------------------------------------------------------------------------
+
+	            File name: HPE-RHEL8-EFI-2020-04-08-v5.2.zip
+		Name (in manifest): HPE-RHEL8-EFI-2020-04-08-v5.2
+		       Description: ImageStreamer artifacts fo RHEL8 personalization and generalization.(c) Copyright 2019-2020 Hewlett Packard Enterprise Development LP. Licensed under the Apache License, Version 2.0 (the \"License\")...
+		             Dated: 2020-04-08 (16:10:30)
+
+--------------------------------------------------------------------------------
+
+Build Plans:
+
+	       Name: HPE-RHEL8-EFI-personalize-and-configure-NICs-LVM-2019-06-11 (Type:deploy)
+	Description: Personalizes RHEL8 for XFS Partition using EFI and configures Multi NIC's  Copyright 2018 -2019 Hewlett Packard Enterprise Development LP Licensed under the Apache License, Version 2.0 (the "License");...
+
+
+	       Name: HPE-RHEL8-EFI-personalize-and-configure-NIC-teamings-LVM-2020-04-08 (Type:deploy)
+	Description: Personalizes RHEL8 for XFS Partition using EFI and configures NIC teaming (c) Copyright 2018-2019 Hewlett Packard Enterprise Development LP Licensed under the Apache License, Version 2.0 (the "License");...
+
+
+
+Plan Scripts:
+
+	       Name: HPE-RHEL8-EFI-configure-deployment-NIC-teaming-2020-04-06 (deploy)
+	   FullName: 24e3db30-983e-49c7-bdb1-3f33932c4808_planscript.json
+	Description: Script to configure deployment interface teaming (ibftNIC teaming)
+
+
+	       Name: HPE-RHEL8-EFI-unmount-2019-03-21 (general)
+	   FullName: 46795bfa-5021-43fa-ad4a-f798d1054b0c_planscript.json
+	Description: Unmounts the EFI partition
+
+
+	       Name: HPE-RHEL8-EFI-configure-management-NIC-teaming-2020-04-08 (deploy)
+	   FullName: 5118a8a3-e6f5-4525-abf5-14a43a630b0a_planscript.json
+	Description: Configures management NIC teaming.
+
+
+	       Name: HPE-RHEL8-EFI-configure-hostname-2019-03-21 (deploy)
+	   FullName: 5f4548d6-627b-49fc-8140-0b8e4f23b91e_planscript.json
+	Description: Configure hostname
+
+
+	       Name: HPE-RHEL8-EFI-configure-partition-using-LVM-2019-05-01 (deploy)
+	   FullName: 72d49037-64d9-4078-9720-7cfc944b256a_planscript.json
+	Description: LVM configuration using /boot/efi
+
+
+	       Name: HPE-RHEL8-EFI-configure-multiple-NICs-2019-03-21 (deploy)
+	   FullName: 799368cb-b4ea-4dfb-a3ca-2b7b0199aec9_planscript.json
+	Description: Configures NICs
+
+
+	       Name: HPE-RHEL8-EFI-mount-2019-03-21 (general)
+	   FullName: a9cfe338-d8b6-48ef-8d98-b3cd28fb9abb_planscript.json
+	Description: Mounts EFI partition (/dev/sda1) as root(/)
+
+
+	       Name: HPE-RHEL8-EFI-configure-users-2019-03-21 (deploy)
+	   FullName: c1a51f22-df0e-46f6-bd8e-d7443d2b9ad4_planscript.json
+	Description: Sets root password and create user accounts
+
+
+	       Name: HPE-RHEL8-EFI-manage-security-services-2019-03-21 (deploy)
+	   FullName: c413c855-4e18-447e-9510-1e5f16978cc9_planscript.json
+	Description: Enables/Disables SSH and Enables Selinux Security
+
+
+	       Name: HPE-RHEL8-EFI-wrapper-2019-03-21 (deploy)
+	   FullName: f31bc2ce-8c13-45cc-a281-41a8d9c39dac_planscript.json
+	Description: This is a wrapper script where all other scripts are evoked.
+
 
 
 
