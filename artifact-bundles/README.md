@@ -1,24 +1,36 @@
-# RHEL 7.x and 8 artifacts for ImageStreamer v5.2 release
+# RHEL 7.x artifacts for ImageStreamer v5.0 release
 
 ## Note:
-- All artifact bundles in this repo are compatible with ImageStreamer v5.2 release
+- All artifact bundles in this repo are compatible with ImageStreamer v5.0 release
 - Click on 'Branch:' drop down menu on this page to get artifact bundles for other ImageStreamer releases
+- The following RHEL versions are supported:
+	- RHEL 7.2
+	- RHEL 7.3
+	- RHEL 7.4
+	- RHEL 7.6
+	
+## Version History:
+
+HPE-RHEL7-EFI-2019-06-11-v5.0.zip
+   - RHEL7 Artifact bundle for EFI based deployments. 
 
 ## EFI based artifacts
 
-With the EFI based artifacts, ImageStreamer can support all the filesystems including XFS/BTRFS for RHEL Operating system.
+With the EFI based artifacts, ImageStreamer can support all the filesystems including XFS/BTRFS for RHEL Operating System.
 This was not possible earlier because, Guestfish, used to customize the boot volume of the operating system, did not support XFS/BTRFS. 
 
-Until now the root partition was mounted in the plan scripts, but now, to enable deployment using FAT32,  mount the partition (/boot/efi) and run the plan scripts through it for personalization, which provides support for all the filesystems.
-
-## Version history
-
+Until now the root partition was mounted, but now, to enable UEFI based deployment, the EFI partition, (/boot/efi) is mounted using the plan scripts for personalization, which provides support for all the filesystems.
 
 # Prerequisite for using EFI Based Artifact bundle
 
 ## Note: 
-- Please make sure you change Filesystem Attribute in the Server Profile creation page to desired filesystem type "only when you have a external drive attached to the blade"
-- If you do not have a external hard drive attached to the blade please leave the default "disabled" option of filesystem attribute as is.
+- ***A new Golden Image needs to be created for using EFI based artifact bundle. Any existing Golden Images created using earlier releases of artifact bundle will not work with EFI artifact bundle. Follow the below steps to capture the Golden Image for RHEL7.***
+
+( In case of HPE Vitual Connect SE 100Gb F32 Module or HPE Synergy 50Gb Interconnect Link Module hardware, follow the steps given in the linked document to load the driver and capture the golden image.
+https://github.hpe.com/ImageStreamerStaged/image-streamer-rhel/blob/v5.0/docs/HPE%20Synergy%20ImageStreamer%20Documentation%20for%20RHEL%207.6%20for%20loading%20drivers%20during%20installation%20and%20Golden%20Image%20capture.pdf )
+
+- If you do not have a external hard drive attached to the blade please leave the default "disabled" option of filesystem attribute as is. Please make sure you change Filesystem Attribute in the Server Profile creation page to desired filesystem type "only when you have a external drive attached to the blade".
+
 - LVM should be created at the time of installing the OS, on the bare metal, before image capture is done. The Filesystem type attribute in the Server Profile Page will not create LVM on the golden image which gets mounted, at the time of deployment.
 
 
@@ -30,87 +42,34 @@ Until now the root partition was mounted in the plan scripts, but now, to enable
 
 3.	Launch iLO Integrated Remote Console of this server and set RHEL 7 ISO file as virtual CD-ROM/DVD image file. Power on the 		server.
 
-4.	When the Grub Screen appears edit the install linux line by pressing 'e' and add ip=ibft or rd.iscsi.ibft=1 to the end of the 		line which starts with 'kernel'
+4.	RHEL installation starts and RHEL installer detects the configured empty OS Volume as an iSCSI disk device. Select this iSCSI 		disk device as the target for RHEL installation.
 
-5.	RHEL installation starts and RHEL installer detects the configured empty OS Volume as an iSCSI disk device. Select this iSCSI 		disk device as the target for RHEL installation.
+5.	Follow onscreen instructions and complete the RHEL installation.
 
-6.	Follow onscreen instructions and complete the RHEL installation.
+6.	After the OS boots up Create the following directories.
 
-7.	After the OS boots up Create the following directories.
+      -	mkdir /boot/efi/EFI/HPE
+      -	mkdir –p /boot/efi/EFI/HPE/isdeploy
+      -	mkdir –p /boot/efi/EFI/HPE/isdeploy/scripts
+      -	mkdir –p /boot/efi/EFI/HPE/isdeploy/tmp
+      -	mkdir –p /boot/efi/EFI/HPE/isdeploy/data
 
-      -	mkdir -p /boot/efi/EFI/HPE/isdeploy
-      -	mkdir –p /boot/efi/EFI/HPE/isdeploy/{scripts,tmp,data}
-
-8.	Modify /etc/rc.d/rc.local. Add below line
+7.	Modify /etc/rc.d/rc.local. Add below line
 
       -	sh /boot/efi/EFI/HPE/isdeploy/HPE-ImageStreamer.bash
-     
-9.	Change permission of the rc.local file. (chmod 755 /etc/rc.d/rc.local)
+      - service ibftT start ( ## Note: Add this line only if using either of the following setups - HPE Vitual Connect SE 100Gb F32 Module or HPE Synergy 50Gb Interconnect Link Module )
 
-10.	Edit /boot/efi/EFI/redhat/grub.cfg and change the hardcoded IP and MAC to ip=ibft (  ## Note: Make this change only if using 		either of the following setups - HPE Vitual Connect SE 100Gb F32 Module or HPE Synergy 50Gb Interconnect Link Module )
+8.	Change permission of the rc.local file. (chmod 755 /etc/rc.d/rc.local)
 
-11.	Power off the server. 
+9.	Edit /boot/efi/EFI/redhat/grub.cfg and change the hardcoded IP and MAC to ip=ibft (  ## Note: Make this change only if using either of the following setups - HPE Vitual Connect SE 100Gb F32 Module or HPE Synergy 50Gb Interconnect Link Module )
 
-12.	Navigate to HPE Synergy Image Streamer -> Golden Images and Click ‘Create Golden image’ 
+10.	Power off the server. 
+
+11.	Navigate to HPE Synergy Image Streamer -> Golden Images and Click ‘Create Golden image’ 
  
-13.	Select the OS volume corresponding to the server profile created for empty OS volume and choose “HPE - Foundation 1.0 - capture 	OS Volume as is” as the capture build plan. 
+12.	Select the OS volume corresponding to the server profile created for empty OS volume and choose “HPE - Foundation 1.0 - capture 	OS Volume as is” as the capture build plan. 
  
-14.	HPE Synergy Image Streamer captures RHEL image and adds it as a golden image.
-
-
-## Golden Image creation for EFI based deployment of RHEL 8:
-
-1.	Ensure that you have access to RHEL 8 ISO installation file containing iSCSI device drivers.
-
-2.	Create a server profile with “HPE - Foundation 1.0 - create empty OS Volume” as OS Deployment plan and any available server 		hardware. Set an appropriate value for volume size in MiB units. The HPE Synergy Server will be configured for access to this 		empty OS Volume.
-
-3.	Launch iLO Integrated Remote Console of this server and set RHEL 8 ISO file as virtual CD-ROM/DVD image file. Power on the 		server.
-
-4.	When the Grub Screen appears edit the install linux line by pressing 'e' and add ip=ibft or rd.iscsi.ibft=1 to the end of the 		line which starts with 'kernel'
-
-5.	RHEL installation starts and RHEL installer detects the configured empty OS Volume as an iSCSI disk device. Select this iSCSI 		disk device as the target for RHEL installation.
-
-6.	Follow onscreen instructions and complete the RHEL installation.
-
-7.	After the OS boots up Create the following directories.
-
-      -	mkdir -p /boot/efi/EFI/HPE/isdeploy
-      -	mkdir –p /boot/efi/EFI/HPE/isdeploy/{scripts,tmp,data}
-            
- 8.	As RedHat has deprecated init boot up process the method of running scripts through local.sh will not work with RHEL8
- 
- 9.	To make personalization work a systemd process needs to be created which will call the wrapper script. Please fallow below steps 	 for creating a systemd process 
-  
-       - cd /etc/systemd/system/
-       - vi personalization.service (add Below line in this file save and exit)
-	
-		[Unit]
-		Description=Personalization
-		After=network-online.target
-
-		[Service]
-		Type=oneshot
-		RemainAfterExit=yes
-		WorkingDirectory=/boot/efi/EFI/HPE/isdeploy/
-		ExecStart=/bin/bash HPE-ImageStreamer.bash
-
-		[Install]
-		WantedBy=multi-user.target
-
-10.	Enable the service "systemctl enable personalization.service"
-
-11.	Power off the server. 
-
-12.	Navigate to HPE Synergy Image Streamer -> Golden Images and Click ‘Create Golden image’ 
- 
-13.	Select the OS volume corresponding to the server profile created for empty OS volume and choose “HPE - Foundation 1.0 - capture 	OS Volume as is” as the capture build plan. 
- 
-14.	HPE Synergy Image Streamer captures RHEL image and adds it as a golden image.
-
-
-## Follow the below document to load driver for HPE Vitual Connect SE 100Gb F32 Module or HPE Synergy 50Gb Interconnect Link Module and Golden image capture process.
-
-- https://github.com/HewlettPackard/image-streamer-rhel/blob/v5.2/docs/HPE%20Synergy%20ImageStreamer%20Documentation%20for%20RHEL%207.6%20for%20loading%20drivers%20during%20installation%20and%20Golden%20Image%20capture.pdf
+13.	HPE Synergy Image Streamer captures RHEL image and adds it as a golden image.
 
 
 ## Artifact Bundle Contents:
@@ -185,6 +144,8 @@ Plan Scripts:
 	       Name: HPE-RHEL7-EFI-manage-security-services-2019-03-21 (deploy)
 	   FullName: eccaa17b-b9ca-45a6-a317-181965494101_planscript.json
 	Description: Enables/Disables SSH and Enables Selinux Security
+
+
 
 
 
