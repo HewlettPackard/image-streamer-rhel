@@ -13,6 +13,11 @@ Until now the root partition was mounted in the plan scripts, but now, to enable
 
 ## Version history
 
+HPE-RHEL7-EFI-2020-04-08-v5.2.zip
+   - RHEL7 Artifact bundle for EFI based deployments.
+   
+HPE-RHEL8-EFI-2020-04-08-v5.2.zip
+   - RHEL8 Artifact bundle for EFI based deployments.
 
 # Prerequisite for using EFI Based Artifact bundle
 
