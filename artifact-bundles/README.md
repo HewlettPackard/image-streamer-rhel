@@ -1,4 +1,4 @@
-# RHEL 7.x and 8 artifacts for ImageStreamer v5.2 release
+# RHEL 7.x artifacts for ImageStreamer v5.2 release
 
 ## Note:
 - All artifact bundles in this repo are compatible with ImageStreamer v5.2 release
