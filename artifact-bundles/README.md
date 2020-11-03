@@ -21,9 +21,6 @@ Until now the root partition was mounted in the plan scripts, but now, to enable
 ## Version history
 - HPE-RHEL7-EFI-2020-04-08-v5.4.zip 
 	- supports both init and systemd boot process
-- HPE-RHEL8-EFI-2020-10-27-v5.4.zip 
-	- supports only systemd boot process
-
 
 # Prerequisite for using EFI Based Artifact bundle
 
