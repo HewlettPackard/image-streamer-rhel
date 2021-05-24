@@ -1,2 +1,2 @@
 # image-streamer-rhel
-Sample RHEL artifact bundles for use with HPE Image Streamer v6.00 release
+Sample RHEL artifact bundles for use with HPE Image Streamer v6.10 release
