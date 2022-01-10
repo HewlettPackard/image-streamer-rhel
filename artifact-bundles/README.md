@@ -27,6 +27,26 @@ Until now the root partition was mounted in the plan scripts, but now, to enable
 - HPE-RHEL8-EFI-2020-10-27-v6.40.zip 
 	- supports only systemd boot process
 
+## Known issue
+
+known RHEL8.4 rdma-core related issue while installing OS ,it will fail to start rdma services. 
+Issue will be applicable for all vendors, not related to specific adapters. 
+After OS installation this service starts itself. Please check the status after OS installation as below: 
+
+# systemctl status rdma-ndd.service
+   rdma-ndd.service - RDMA Node Description Daemon
+   Loaded: loaded (/usr/lib/systemd/system/rdma-ndd.service; static; vendor preset: disabled)
+   Active: active (running) since Tue 2021-08-10 12:39:01 IST; 1 weeks 0 days ago
+     Docs: man:rdma-ndd
+Main PID: 2071 (rdma-ndd)
+    Tasks: 1 (limit: 822332)
+   Memory: 1.0M
+   CGroup: /system.slice/rdma-ndd.service
+           ââ2071 /usr/sbin/rdma-ndd --systemd
+
+Aug 10 12:39:01 B3D730c systemd[1]: Starting RDMA Node Description Daemon...
+Aug 10 12:39:01 B3D730c systemd[1]: Started RDMA Node Description Daemon
+
 
 # Prerequisite for using EFI Based Artifact bundle
 
