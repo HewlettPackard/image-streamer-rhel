@@ -12,6 +12,8 @@
   - RHEL 7.8
   - RHEL 8.3
   - RHEL 8.4
+  - RHEL 8.5
+  - RHEL 8.6
   
 
 ## EFI based artifacts
