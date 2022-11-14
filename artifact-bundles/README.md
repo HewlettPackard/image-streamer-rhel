@@ -1,19 +1,20 @@
-# RHEL 7.x and 8.x artifacts for ImageStreamer v6.40 release
+# RHEL 7.x, 8.x and 9.x artifacts for ImageStreamer v6.40 release
 
 ## Note:
 - All artifact bundles in this repo are compatible with ImageStreamer v6.40 release
 - Click on 'Branch:' drop down menu on this page to get artifact bundles for other ImageStreamer releases
 - The following RHEL versions are supported
-  - RHEL 7.2
-  - RHEL 7.3
-  - RHEL 7.4
-  - RHEL 7.6
-  - RHEL 7.7
-  - RHEL 7.8
-  - RHEL 8.3
-  - RHEL 8.4
-  - RHEL 8.5
-  - RHEL 8.6
+	- RHEL 7.2
+	- RHEL 7.3
+	- RHEL 7.4
+	- RHEL 7.6
+	- RHEL 7.7
+	- RHEL 7.8
+	- RHEL 8.3
+	- RHEL 8.4
+	- RHEL 8.5
+	- RHEL 8.6
+	- RHEL 9.0
   
 
 ## EFI based artifacts
@@ -28,6 +29,8 @@ Until now the root partition was mounted in the plan scripts, but now, to enable
 	- supports both init and systemd boot process
 - HPE-RHEL8-EFI-2020-10-27-v6.40.zip 
 	- supports only systemd boot process
+	- added support for RHEL 9.0
+	- There is a change in the capture procedure for RHEL 9. Details below.
 
 ## Known issue
 
@@ -48,7 +51,6 @@ Main PID: 2071 (rdma-ndd)
 
 Aug 10 12:39:01 B3D730c systemd[1]: Starting RDMA Node Description Daemon...
 Aug 10 12:39:01 B3D730c systemd[1]: Started RDMA Node Description Daemon
-
 
 # Prerequisite for using EFI Based Artifact bundle
 
@@ -143,16 +145,71 @@ Aug 10 12:39:01 B3D730c systemd[1]: Started RDMA Node Description Daemon
  
 14.	HPE Synergy Image Streamer captures RHEL image and adds it as a golden image.
 
+## Golden Image creation for EFI based deployment of RHEL 9:
+
+1.	Ensure that you have access to RHEL 9 ISO installation file containing iSCSI device drivers.
+
+2.	Create a server profile with “HPE - Foundation 1.0 - create empty OS Volume” as OS Deployment plan and any available server 		hardware. Set an appropriate value for volume size in MiB units. The HPE Synergy Server will be configured for access to this 		empty OS Volume.
+
+3.	Launch iLO Integrated Remote Console of this server and set RHEL 9 ISO file as virtual CD-ROM/DVD image file. Power on the 		server.
+
+4.	When the Grub Screen appears edit the install linux line by pressing 'e' and add ip=ibft rd.iscsi.firmware inst.nonibftiscsiboot 		to the end of the line which starts with 'kernel'
+
+5.	RHEL installation starts and RHEL installer detect the configured empty OS Volume as an iSCSI disk device.
+	
+	**Note:**in RHEL9.0 "Installation Destination" may show error, open "Installation Destination" and Select the iSCSI disk device 		as the target for RHEL installation.
+
+6.	Follow onscreen instructions and complete the RHEL installation.
+
+7.	During first OS boot, press 'e' to edit the boot loader options and add ip=ibft rd.iscsi.firmware to the end of the line		 which starts with 'kernel'
+
+8.	After the OS boots up 
+	- Create the following directories.
+		- mkdir -p /boot/efi/EFI/HPE/isdeploy
+		- mkdir –p /boot/efi/EFI/HPE/isdeploy/{scripts,tmp,data}
+	- execute the following command to set the boot loader options for ibft
+		- grubby –update-kernel=/boot/vmlinuz-$(uname –r) –args="ip=ibft rd.iscsi.firmware"
+
+9.	As RedHat has deprecated init boot up process the method of running scripts through local.sh will not work with RHEL9
+ 
+10.	To make personalization work a systemd process needs to be created which will call the wrapper script. Please fallow below steps 	 for creating a systemd process 
+  
+       - cd /etc/systemd/system/
+       - vi personalization.service (add Below line in this file save and exit)
+	
+		[Unit]
+		Description=Personalization
+		After=network-online.target
+
+		[Service]
+		Type=oneshot
+		RemainAfterExit=yes
+		WorkingDirectory=/boot/efi/EFI/HPE/isdeploy/
+		ExecStart=/bin/bash HPE-ImageStreamer.bash
+
+		[Install]
+		WantedBy=multi-user.target
+
+11.	Enable the service "systemctl enable personalization.service"
+
+12.	Power off the server. 
+
+13.	Navigate to HPE Synergy Image Streamer -> Golden Images and Click ‘Create Golden image’ 
+ 
+14.	Select the OS volume corresponding to the server profile created for empty OS volume and choose “HPE - Foundation 1.0 - capture 	OS Volume as is” as the capture build plan. 
+ 
+15.	HPE Synergy Image Streamer captures RHEL image and adds it as a golden image.
+
 
 ## Follow the below document to load driver for HPE Vitual Connect SE 100Gb F32 Module or HPE Synergy 50Gb Interconnect Link Module and Golden image capture process.
 
-- https://github.com/HewlettPackard/image-streamer-rhel/blob/v6.40/docs/HPE%20Synergy%20ImageStreamer%20Documentation%20for%20RHEL%207.6%20for%20loading%20drivers%20during%20installation%20and%20Golden%20Image%20capture.pdf
+- https://github.hpe.com/ImageStreamer/image-streamer-rhel/blob/v6.40/docs/HPE%20Synergy%20ImageStreamer%20Documentation%20for%20RHEL%207.6%20for%20loading%20drivers%20during%20installation%20and%20Golden%20Image%20capture.pdf
 
 ## Artifact Bundle Contents:
 
 --------------------------------------------------------------------------------
 
-                                    File name: HPE-RHEL7-EFI-2020-04-08-v6.40.zip
+                     File name: HPE-RHEL7-EFI-2020-04-08-v6.40.zip
             Name (in manifest): HPE-RHEL7-EFI-2020-04-08-v6.40
                    Description: ImageStreamer artifacts for RHEL7 personalization and generalization.(c) Copyright 2019-2020 Hewlett Packard Enterprise Development LP. Licensed under the Apache License, Version 2.0 (the \"License\")...
                          Dated: 2020-04-08 (18:50:36)
@@ -214,7 +271,10 @@ Plan Scripts:
            Name: HPE-RHEL7-EFI-wrapper-2019-03-21 (deploy)
        FullName: f31bc2ce-8c13-45cc-a281-41a8d9c39dac_planscript.json
     Description: This is a wrapper script where all other scripts are evoked.
-                File name: HPE-RHEL8-EFI-2020-10-27-v6.40.zip
+
+--------------------------------------------------------------------------------
+
+                     File name: HPE-RHEL8-EFI-2020-10-27-v6.40.zip
             Name (in manifest): HPE-RHEL8-EFI-2020-10-27-v6.40
                    Description: ImageStreamer artifacts fo RHEL8 personalization and generalization.(c) Copyright 2019-2020 Hewlett Packard Enterprise Development LP. Licensed under the Apache License, Version 2.0 (the \"License\")...
                          Dated: 2020-09-08 (09:14:45)
