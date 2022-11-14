@@ -38,7 +38,7 @@ known RHEL8.4 rdma-core related issue while installing OS ,it will fail to start
 Issue will be applicable for all vendors, not related to specific adapters. 
 After OS installation this service starts itself. Please check the status after OS installation as below: 
 
-# systemctl status rdma-ndd.service
+.# systemctl status rdma-ndd.service
    rdma-ndd.service - RDMA Node Description Daemon
    Loaded: loaded (/usr/lib/systemd/system/rdma-ndd.service; static; vendor preset: disabled)
    Active: active (running) since Tue 2021-08-10 12:39:01 IST; 1 weeks 0 days ago
